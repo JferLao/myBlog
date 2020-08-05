@@ -163,7 +163,7 @@ n.a = 15;						//m={ a: 15, b: 20 }  n={ a: 15, b: 20 }
 
 当前函数执行完毕之后,ESP就睡下移到下一个函数的执行上下文,**这个下移操作就是销毁函数执行上下文的过程**。
 
-![从栈中回收 showName 执行上下文](https://static001.geekbang.org/resource/image/b8/f3/b899cb27c0d92c31f9377db59939aaf3.jpg)
+![从栈中回收 执行上下文](https://static001.geekbang.org/resource/image/b8/f3/b899cb27c0d92c31f9377db59939aaf3.jpg)
 
 从图中可以看出，当 showName 函数执行结束之后，ESP 向下移动到 foo 函数的执行上下文中，上面 showName 的执行上下文虽然保存在栈内存中，但是已经是无效内存了。
 比如当 foo 函数再次调用另外一个函数时，这块内容会被直接覆盖掉，用来存放另外一个函数的执行上下文。
@@ -264,7 +264,7 @@ V8 把堆分成两个区域——新生代和老生代，并分别使用两个�
 #### 浏览器测试
 具体步骤如下：
 1. 打开开发者工具，选择 Timeline 面板。
-2. 在顶部的Capture字段里面勾选 Memory。
+2. 在顶部的**Capture**字段里面勾选 Memory。
 3. 点击左上角的录制按钮。
 4. 在页面上进行各种操作，模拟用户的使用情况。
 5. 一段时间后，点击对话框的 stop 按钮，面板上就会显示这段时间的内存占用情况。
@@ -275,13 +275,13 @@ V8 把堆分成两个区域——新生代和老生代，并分别使用两个�
 
 #### 命令行
 具体步骤如下：
-1. 通过输出console.log(process.memoryUsage())得到数据
-2. process.memoryUsage返回一个对象，包含了 Node 进程的内存占用信息。该对象包含四个字段，单位是字节
+1. 通过输出**console.log(process.memoryUsage())**得到数据
+2. **process.memoryUsage**返回一个对象，包含了 Node 进程的内存占用信息。该对象包含四个字段，单位是字节
 	- rss（resident set size）：所有内存占用，包括指令区和堆栈。
 	- heapTotal："堆"占用的内存，包括用到的和没用到的。
 	- heapUsed：用到的堆的部分。
 	- external： V8 引擎内部的 C++ 对象占用的内存。
-3. 判断内存泄漏，以heapUsed字段为准
+3. 判断内存泄漏，以**heapUsed**字段为准
 
 ![命令行](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041702-1.png)
 
