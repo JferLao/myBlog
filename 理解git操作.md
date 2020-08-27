@@ -47,6 +47,7 @@ git rm  <fileName> //移除文件
 
 ```
 git commit -m '消息'  //提交更改
+git commit --amend    //修改最新的commit 的message
 ```
 
 4. 变成Git仓库内文件名
@@ -95,9 +96,40 @@ git cat-file -t <hash>			//查看文件类型
 
 ```
 git chehckout
+git checkout -b //创建新分支并切换到对应分支上
 ```
 
 **git branch 创建与删除分支**
+
 ```
 git branch
+git branch -av  //列出全部分支
+git branch -d <分支名> //清除分支
+git branch -D <分支名> //(强制)清除分支
+```
+
+9. 比较差异
+```
+git diff commit1 commit2   //比较commit1和commit2的差异
+git diff --cached //比较变更差异
+```
+
+
+## 常用Git场景
+1. 删除不需要的分支
+```
+git branch -d <分支名> //清除分支
+git branch -D <分支名> //(强制)清除分支
+```
+2. 修改最新commit的message
+```
+git commit --amend	//进入变更页  用i写入 :wq!保存并退出
+```
+3. 修改老旧的commit的message
+```
+git rebase -i 进入交互界面 根据提示输入内容 选择r命令
+```
+4. 把多个commit整理成1个
+```
+git rebase -i 进入交互界面 根据提示输入内容 选择s命令
 ```
