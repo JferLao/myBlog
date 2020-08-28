@@ -92,11 +92,14 @@ git cat-file -t <hash>			//查看文件类型
 ```
 
 8. 创建分支
-**git checkout 用于切换分支或恢复工作树文件**
+**git checkout 重写工作区**
 
 ```
-git chehckout
+git chehckout	//把当前目录所有修改的文件 从HEAD中签出并且把它恢复成未修改时的样子
 git checkout -b //创建新分支并切换到对应分支上
+git checkout master     //取出master版本的head
+git checkout master file_name  //放弃当前对文件file_name的修改
+git checkout tag_name    //在当前分支上 取出 tag_name 的版本
 ```
 
 **git branch 创建与删除分支**
@@ -112,8 +115,22 @@ git branch -D <分支名> //(强制)清除分支
 ```
 git diff commit1 commit2   //比较commit1和commit2的差异
 git diff --cached //比较变更差异
+git diff branch1 branch2 filename //比较分支1和分支2关于filename文件的差异
 ```
 
+10. 复位HEAD指定状态
+```
+git reset HEAD	//暂存区恢复成HEAD的一样
+git reset --hard HEAD //恢复到之前的状态
+git reset  --hard hash	//消除最近的几次提交(commit后想取消)
+```
+
+11. 命令用于将更改储藏在脏工作目录中
+```
+git stash 把当前工作区的内容放入暂存区
+git stash pop 把暂存区的内容恢复到工作区，且删除
+git stash apply把暂存区的内容恢复到工作区，且保留
+```
 
 ## 常用Git场景
 1. 删除不需要的分支
@@ -132,4 +149,34 @@ git rebase -i 进入交互界面 根据提示输入内容 选择r命令
 4. 把多个commit整理成1个
 ```
 git rebase -i 进入交互界面 根据提示输入内容 选择s命令
+```
+5. 暂存区恢复成HEAD的一样
+```
+git reset HEAD
+```
+6. 工作区恢复成暂存区
+```
+git checkout
+```
+7. 取消暂存区部分文件的更改(add后想取消)
+```
+git reset Head <fileName>
+```
+8. 消除最近的几次提交(commit后想取消)
+```
+git reset  --hard hash
+```
+9. 比较两个不同commit的文件的差异
+```
+git diff branch1 branch2 filename //比较分支1和分支2关于filename文件的差异
+```
+10. 恢复文件原来的状态
+```
+git reset --hard HEAD 恢复到之前的状态
+```
+11. 之前任务修改,暂缓此时任务
+```
+git stash 把当前工作区的内容放入暂存区
+git stash pop 把暂存区的内容恢复到工作区，且删除
+git stash apply把暂存区的内容恢复到工作区，且保留
 ```
