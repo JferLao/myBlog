@@ -132,6 +132,20 @@ git stash pop 把暂存区的内容恢复到工作区，且删除
 git stash apply把暂存区的内容恢复到工作区，且保留
 ```
 
+12. 本地与远程仓库关联
+```
+git remote add github github地址	
+```
+
+13. 本地与远程仓库操作
+```
+git fetch githup 拉取远程版本库
+git merge -h 查看合并帮助信息
+git merge --allow-unrelated-histories githup/master 合并githup上的master分支（两分支不是父子关系，所以合并需要添加 --allow-unrelated-histories）
+git push githup 推送同步到githup仓库
+```
+
+
 ## 常用Git场景
 1. 删除不需要的分支
 ```
@@ -179,4 +193,32 @@ git reset --hard HEAD 恢复到之前的状态
 git stash 把当前工作区的内容放入暂存区
 git stash pop 把暂存区的内容恢复到工作区，且删除
 git stash apply把暂存区的内容恢复到工作区，且保留
+```
+12. 将Git仓库备份到本地
+```
+git clone --bare <文件路径>协议
+```
+13. 和远端仓库发生关联
+```
+git remote add 
+```
+14. 将本地仓库同步到Github
+```
+git remote add github github地址			//从本地和远程仓库关联
+git fetch githup 拉取远程版本库
+git merge -h 查看合并帮助信息
+git merge --allow-unrelated-histories githup/master 合并githup上的master分支（两分支不是父子关系，所以合并需要添加 --allow-unrelated-histories）
+git push githup 推送同步到githup仓库
+```
+
+15. 使用规则
+```
+1：push前一定先pull
+2：合并代码必须两人结对
+3：合并冲突，非自己的变动保持原样，和自己冲突的代码找相应的代码提交人确认如何解决冲突
+4：合并完成后，保证本地能编译能运行再push
+5：合并到主干的代码必须通过测试，必须通过代码review
+6：不同的功能从主干上拉新分支进行开发工作
+7：分支的命名需要加上，拉取人＋拉取说明
+8：上完线的分支要及时清理
 ```
