@@ -142,7 +142,7 @@ git remote add github github地址
 git fetch githup 拉取远程版本库
 git merge -h 查看合并帮助信息
 git merge --allow-unrelated-histories githup/master 合并githup上的master分支（两分支不是父子关系，所以合并需要添加 --allow-unrelated-histories）
-git push githup 推送同步到githup仓库
+git  推送同步到githup仓库
 ```
 
 
@@ -205,7 +205,7 @@ git remote add
 14. 将本地仓库同步到Github
 ```
 git remote add github github地址			//从本地和远程仓库关联
-git fetch githup 拉取远程版本库
+git fetch github 拉取远程版本库
 git merge -h 查看合并帮助信息
 git merge --allow-unrelated-histories githup/master 合并githup上的master分支（两分支不是父子关系，所以合并需要添加 --allow-unrelated-histories）
 git push githup 推送同步到githup仓库
@@ -221,4 +221,13 @@ git push githup 推送同步到githup仓库
 6：不同的功能从主干上拉新分支进行开发工作
 7：分支的命名需要加上，拉取人＋拉取说明
 8：上完线的分支要及时清理
+```
+
+
+16. 禁止操作
+```
+git push -f 分支   //强制向集成分支执行导入
+(可以使用 git reflog 命令查找历史，然后利用 git reset --hard HAED@{n} 的方式恢复)
+
+//禁止向集成分支变更
 ```
